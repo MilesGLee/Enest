@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 1, z: -10}
+  m_FollowOffset: {x: 0, y: 2, z: -10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -274,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80273767}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.061253, y: 2, z: 4.230095}
+  m_LocalPosition: {x: 9.061253, y: 3, z: 4.230095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1928153700}
@@ -374,11 +374,11 @@ MonoBehaviour:
   m_SplineCurvature: 0.2
   m_Orbits:
   - m_Height: 5
-    m_Radius: 3
-  - m_Height: 1
+    m_Radius: 5
+  - m_Height: 2
     m_Radius: 10
   - m_Height: -1
-    m_Radius: 3
+    m_Radius: 1
   m_LegacyHeadingBias: 3.4028235e+38
   m_Rigs:
   - {fileID: 1928153701}
@@ -394,10 +394,11 @@ GameObject:
   m_Component:
   - component: {fileID: 211206641}
   - component: {fileID: 211206644}
-  - component: {fileID: 211206643}
   - component: {fileID: 211206642}
+  - component: {fileID: 211206643}
+  - component: {fileID: 211206645}
   m_Layer: 0
-  m_Name: Body
+  m_Name: Third Person Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,6 +465,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &211206645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211206640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac22b0c19ca64d44ba3f9fe0cf5baf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visualMeshRenderer: {fileID: 1151045573}
+  _defaultMaterial: {fileID: 2100000, guid: 557fe028ecd288e43bddf5c326044d64, type: 2}
+  _invincibleMaterial: {fileID: 2100000, guid: 0e387d4cab42985468db0461adfd64fe, type: 2}
+  _cameraTransform: {fileID: 246166269}
 --- !u!1 &246166266
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,8 +558,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246166266}
-  m_LocalRotation: {x: 0.016993618, y: -0.84308505, z: 0.026687343, w: 0.5368487}
-  m_LocalPosition: {x: 9.061253, y: 2, z: 4.230095}
+  m_LocalRotation: {x: 0.043195177, y: -0.84077525, z: 0.06783515, w: 0.53537786}
+  m_LocalPosition: {x: 9.061253, y: 3, z: 4.230095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1321127973}
@@ -897,7 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 1, z: -10}
+  m_FollowOffset: {x: 0, y: 2, z: -10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -974,7 +991,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836486233}
-  m_LocalRotation: {x: 0.007251605, y: -0.8434305, z: 0.011388165, w: 0.5370686}
+  m_LocalRotation: {x: 0.033475537, y: -0.8418676, z: 0.052571114, w: 0.5360734}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1115,7 +1132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1321127973}
   m_Layer: 0
-  m_Name: Third Person Controller
+  m_Name: Third Person Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,7 +1467,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923800928}
-  m_LocalRotation: {x: 0.01699362, y: -0.84308505, z: 0.02668734, w: 0.5368487}
+  m_LocalRotation: {x: 0.043195188, y: -0.8407753, z: 0.06783517, w: 0.53537786}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1524,7 +1541,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928153699}
-  m_LocalRotation: {x: 0.026755812, y: -0.8424602, z: 0.042018227, w: 0.53645074}
+  m_LocalRotation: {x: 0.052926287, y: -0.8394023, z: 0.0831172, w: 0.5345036}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1647,7 +1664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 1, z: -10}
+  m_FollowOffset: {x: 0, y: 2, z: -10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

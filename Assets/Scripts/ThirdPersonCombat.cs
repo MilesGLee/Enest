@@ -7,17 +7,17 @@ using Cinemachine;
 public class ThirdPersonCombat : MonoBehaviour
 {
     [Header("Combat Movement")]
-    private ThirdPersonMovement _movement;
+    [SerializeField] private MeshRenderer _visualMeshRenderer;
     [SerializeField] private Material _defaultMaterial;
     [SerializeField] private Material _invincibleMaterial;
+    [SerializeField] private Transform _cameraTransform;
+    private ThirdPersonMovement _movement;
+    private CharacterController _controller;
     private float _dodgeCooldown = 1.0f;
     private float _dodgeDuration = 0.5f;
     private bool _canDodge;
     private bool _dodgeActive;
-    private CharacterController _controller;
-    [SerializeField] private MeshRenderer _visualMeshRenderer;
     private Vector3 _dodgeDirection;
-    [SerializeField] private Transform _cameraTransform;
 
     void Start()
     {
