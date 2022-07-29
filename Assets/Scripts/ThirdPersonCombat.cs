@@ -18,6 +18,12 @@ public class ThirdPersonCombat : MonoBehaviour
     private bool _canDodge;
     private bool _dodgeActive;
     private Vector3 _dodgeDirection;
+    [Header("Combat Attacks")]
+    [SerializeField] private Animator _animator;
+    [Header("Targetting")]
+    [SerializeField] private Transform _target;
+    [SerializeField] private CinemachineBrain _cameraBrain;
+    private bool _targetting;
 
     void Start()
     {
@@ -28,8 +34,10 @@ public class ThirdPersonCombat : MonoBehaviour
 
     void Update()
     {
+        #region Dodging
         if (_canDodge && Input.GetKeyDown(KeyCode.Space))
         {
+            _animator.SetTrigger("dodge");
             _canDodge = false;
             _dodgeActive = true;
             _movement.CanMove = false;
@@ -54,6 +62,28 @@ public class ThirdPersonCombat : MonoBehaviour
             _visualMeshRenderer.material = _invincibleMaterial;
             _controller.Move(_dodgeDirection * 10f * Time.deltaTime);
         }
+        #endregion
+        #region Attacking
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !_dodgeActive) 
+        {
+            _animator.SetTrigger("attack");
+        }
+        #endregion
+        #region Targetting
+        if (Input.GetKeyDown(KeyCode.F)) 
+        {
+            _targetting = !_targetting;
+        }
+        if (_targetting) 
+        {
+            _cameraBrain.enabled = false;
+            _cameraBrain.transform.LookAt(_target);
+        }
+        if (!_targetting) 
+        {
+            _cameraBrain.enabled = true;
+        }
+        #endregion
     }
 
 }
