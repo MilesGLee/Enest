@@ -20,10 +20,13 @@ public class ThirdPersonCombat : MonoBehaviour
     private Vector3 _dodgeDirection;
     [Header("Combat Attacks")]
     [SerializeField] private Animator _animator;
-    [Header("Targetting")]
+    private float _timeSinceLastAttack;
+    private int _attackCount;
+    [Header("Targeting")]
     [SerializeField] private Transform _target;
+    [SerializeField] private Transform _cameraPoint;
     [SerializeField] private CinemachineBrain _cameraBrain;
-    private bool _targetting;
+    private bool _targeting;
 
     void Start()
     {
@@ -66,20 +69,31 @@ public class ThirdPersonCombat : MonoBehaviour
         #region Attacking
         if (Input.GetKeyDown(KeyCode.Mouse0) && !_dodgeActive) 
         {
+            if (_timeSinceLastAttack >= 0.85f)
+                _attackCount = 0;
+            if (_timeSinceLastAttack < 0.85f && _timeSinceLastAttack >= 0.5f)
+                _attackCount++;
             _animator.SetTrigger("attack");
+            _animator.SetInteger("attackCount", _attackCount);
+            _timeSinceLastAttack = 0;
+            if (_attackCount > 1)
+                _attackCount = 0;
         }
+        _timeSinceLastAttack += Time.deltaTime;
         #endregion
-        #region Targetting
+        #region Targeting
         if (Input.GetKeyDown(KeyCode.F)) 
         {
-            _targetting = !_targetting;
+            _targeting = !_targeting;
         }
-        if (_targetting) 
+        if (_targeting) 
         {
             _cameraBrain.enabled = false;
-            _cameraBrain.transform.LookAt(_target);
+            Quaternion lookRotation = Quaternion.LookRotation((_target.position - _cameraBrain.transform.position).normalized);
+            _cameraBrain.transform.rotation = Quaternion.Slerp(_cameraBrain.transform.rotation, lookRotation, Time.deltaTime * 15);
+            _cameraBrain.transform.position = _cameraPoint.position;
         }
-        if (!_targetting) 
+        if (!_targeting) 
         {
             _cameraBrain.enabled = true;
         }
